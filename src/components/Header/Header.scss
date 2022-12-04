@@ -1,0 +1,17 @@
+.navbar-nav {
+  @media screen and (max-width: 991px) {
+    width: 100%;
+    width: 100%;
+    background: #000;
+    position: absolute;
+    top: 80px;
+    z-index: 300;
+    left: 0;
+    text-align: center;
+  }
+}
+
+.serchbox {
+  max-width: 768px;
+  padding-right: 1rem;
+}
