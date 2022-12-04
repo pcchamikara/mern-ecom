@@ -23,7 +23,7 @@ import SearchScreen from './screens/SearchScreen.js';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/mern-ecom">
       <Header />
       <ToastContainer
         position="top-right"
