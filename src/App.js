@@ -20,6 +20,7 @@ import ProductList from './screens/admin/ProductList';
 import ProductAddEdit from './screens/admin/ProductAddEdit';
 import OrderList from './screens/admin/OrderList';
 import SearchScreen from './screens/SearchScreen.js';
+import ArchiveScreen from './screens/ArchiveScreen';
 
 function App() {
   return (
@@ -37,16 +38,25 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <div className="h-75  p-0" fluid>
+      <div className="h-75  p-0">
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/page/:pageNumber" element={<HomeScreen />} />
           <Route path="/product/:id" element={<ProductScreen />} />
-          <Route path="/search/:keyword" element={<SearchScreen />} />
-          <Route
-            path="/search/:keyword/page/:pageNumber"
-            element={<SearchScreen />}
-          />
+          <Route path="/search/">
+            <Route index element={<SearchScreen />} />
+            <Route path=":keyword" element={<SearchScreen />} />
+            <Route
+              path=":keyword/page/:pageNumber"
+              element={<SearchScreen />}
+            />
+            <Route path="page/:pageNumber" element={<ArchiveScreen />} />
+          </Route>
+          <Route path="/products/">
+            <Route index element={<ArchiveScreen />} />
+            <Route path=":category" element={<ArchiveScreen />} />
+          </Route>
+
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />

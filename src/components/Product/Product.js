@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import ProductImage from '../ProductImage';
@@ -16,8 +16,10 @@ export default function Product({ product }) {
         <Card.Title>
           <Link to={`/product/${product._id}`}>{product.name}</Link>
         </Card.Title>
-
-        <span className="my-3">
+        <Col>
+          <strong>${product.price} </strong>
+        </Col>
+        <span className="rating">
           <Rating
             value={product.totalRating}
             text={`from ${product.numOfReviews} ${
@@ -26,6 +28,12 @@ export default function Product({ product }) {
           />
         </span>
       </Card.Body>
+
+      <Col>
+        <Link to={`/product/${product._id}`}>
+          <Button style={{ width: '100%' }}> More Details</Button>
+        </Link>
+      </Col>
     </Card>
   );
 }

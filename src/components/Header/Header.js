@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { category } from '../../constants/productConstants';
 import { userActions } from '../../slice/userSlice';
 import CartIcon from '../CartIcon';
 import SearchBox from '../SearchBox';
@@ -32,6 +33,17 @@ export const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav>
             <Navbar.Collapse id="basic-navbar-nav me-auto">
+              <NavDropdown title="categories">
+                {category.map((cat) => (
+                  <NavDropdown.Item
+                    as={Link}
+                    to={`/products/${cat}`}
+                    key={cat._id + cat.name}
+                  >
+                    {cat}
+                  </NavDropdown.Item>
+                ))}
+              </NavDropdown>
               <Nav.Link as={Link} to="/cart">
                 <CartIcon />
               </Nav.Link>

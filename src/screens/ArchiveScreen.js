@@ -20,7 +20,7 @@ import Products from '../components/Products';
 import ScreenWrapper from '../components/ScreenWrapper';
 import { fetchProducts } from '../slice/productSlice';
 
-export default function SearchScreen() {
+export default function ArchiveScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pages, page } = useSelector((state) => state.product);
@@ -42,7 +42,7 @@ export default function SearchScreen() {
     searchParams.get('pageNumber') ? searchParams.get('pageNumber') : 1
   );
   const params = { orderBy, productPrice, pageNumber }; // preparing query params to push into route
-  const { keyword } = useParams();
+  const { category } = useParams();
   const filterHander = (e) => {
     e.preventDefault();
     setPageNumber(1);
@@ -61,17 +61,17 @@ export default function SearchScreen() {
 
   useEffect(() => {
     dispatch(
-      fetchProducts({ max: productPrice, sort: orderBy, keyword, pageNumber })
+      fetchProducts({ max: productPrice, sort: orderBy, category, pageNumber })
     );
   }, [
-    keyword,
+    category,
     searchParams.get('orderBy'),
     searchParams.get('productPrice'),
     searchParams.get('pageNumber'),
   ]);
   return (
     <ScreenWrapper>
-      <h1>{keyword ? keyword : 'All products'}</h1>
+      <h1>{category ? category : 'All products'}</h1>
       <Row>
         <Col sm={3}>
           <ListGroup>

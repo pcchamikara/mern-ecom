@@ -25,11 +25,23 @@ const requestHeader = (token) => {
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async ({ keyword = '', pageNumber = 1 }, { rejectWithValue }) => {
-    console.log('keyword', keyword);
+  async (
+    {
+      keyword = '',
+      pageNumber = 1,
+      category = '',
+      min = 0,
+      max = '',
+      sort = '',
+      perPage,
+    },
+    { rejectWithValue }
+  ) => {
     try {
       const response = await axios.get(
-        `${BACKEND_BASE}/products?q=${keyword}&pageNumber=${pageNumber}`,
+        `${BACKEND_BASE}/products?q=${keyword}&pageNumber=${pageNumber}&category=${category}&min=${min}&max=${max}&sort=${sort}&perPage=${
+          perPage ? perPage : 8
+        } `,
         initialState
       );
       return response.data;

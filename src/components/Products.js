@@ -1,43 +1,32 @@
 import React, { useEffect } from 'react';
 import { Alert, Col, Pagination, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import {
+  createSearchParams,
+  Link,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { fetchProducts } from '../slice/productSlice';
 import Loader from './Loader';
 import Product from './Product/Product';
 
-export default function Products() {
+export default function Products({ perPage = 8 }) {
   const dispatch = useDispatch();
-  const { products, status, error, pages, page } = useSelector(
-    (state) => state.product
-  );
+  const { products, status, error } = useSelector((state) => state.product);
 
   const { keyword } = useParams();
   const { pageNumber } = useParams();
+
   useEffect(() => {
-    if (keyword !== '') {
-      console.log('keywordkeyword', keyword);
-      dispatch(fetchProducts({ keyword, pageNumber }));
-    }
-  }, [dispatch, keyword, pageNumber]);
+    /*  if (keyword !== '') {
+      dispatch(fetchProducts({ keyword }));
+    } */
+    dispatch(fetchProducts({ perPage }));
+  }, [dispatch, keyword]);
 
   /* pagination */
-  let items = []; //keyword ? `/search/${keyword}/page/${page}` :
-  for (let number = 1; number <= pages; number++) {
-    items.push(
-      <li
-        className={number === page ? ' page-item active' : 'page-item'}
-        key={number}
-      >
-        <Link
-          className="page-link"
-          to={keyword ? `/search/${keyword}/page/${number}` : `/page/${number}`}
-        >
-          {number}
-        </Link>
-      </li>
-    );
-  }
 
   let content;
   if (status === 'loading') {
@@ -54,9 +43,7 @@ export default function Products() {
                 <Product product={prod} />
               </Col>
             ))}
-            <div>
-              <Pagination>{items}</Pagination>
-            </div>
+            <div></div>
           </>
         ) : (
           <>
