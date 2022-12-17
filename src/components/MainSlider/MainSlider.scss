@@ -1,3 +1,5 @@
+@import '../../styles/Colors.scss';
+
 .carousel-item img {
   object-fit: contain;
   width: 100%;
@@ -7,7 +9,7 @@
   .right {
     display: flex;
     align-items: center;
-    background: #1a1a1a;
+    background: $pri;
     color: #fff !important;
 
     h2 a {

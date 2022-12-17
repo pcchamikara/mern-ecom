@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function CheckoutSteps({ step1, step2, step3, step4 }) {
   return (
-    <Nav>
+    <Nav className="mb-4">
       {/*   <NavItem>
         {step1 ? (
           <NavLink>Sign in</NavLink>

@@ -84,6 +84,5 @@ export default function MainSlider() {
     );
   }
 
-  console.log(topRatedProducts);
   return <div style={{ position: 'relative' }}>{content}</div>;
 }

@@ -18,79 +18,7 @@ import {
 import axios from 'axios';
 import { makePaypalPayment } from '../slice/orderDetailSlice';
 import { imageUrl } from '../helpers/imageHelper';
-
-/* const testDetails = {
-  id: '1M2089627N101701V',
-  intent: 'CAPTURE',
-  status: 'COMPLETED',
-  purchase_units: [
-    {
-      reference_id: 'default',
-      amount: {
-        currency_code: 'USD',
-        value: '1919.91',
-      },
-      payee: {
-        email_address: 'sb-m2kgh22167219@business.example.com',
-        merchant_id: 'BDRQVJUCJCH9N',
-      },
-      shipping: {
-        name: {
-          full_name: 'John Doe',
-        },
-        address: {
-          address_line_1: '1 Main St',
-          admin_area_2: 'San Jose',
-          admin_area_1: 'CA',
-          postal_code: '95131',
-          country_code: 'US',
-        },
-      },
-      payments: {
-        captures: [
-          {
-            id: '2SY68479U2447401W',
-            status: 'COMPLETED',
-            amount: {
-              currency_code: 'USD',
-              value: '1919.91',
-            },
-            final_capture: true,
-            seller_protection: {
-              status: 'ELIGIBLE',
-              dispute_categories: [
-                'ITEM_NOT_RECEIVED',
-                'UNAUTHORIZED_TRANSACTION',
-              ],
-            },
-            create_time: '2022-11-12T14:20:31Z',
-            update_time: '2022-11-12T14:20:31Z',
-          },
-        ],
-      },
-    },
-  ],
-  payer: {
-    name: {
-      given_name: 'John',
-      surname: 'Doe',
-    },
-    email_address: 'sb-zmz4p22167218@personal.example.com',
-    payer_id: 'D7GGXDTP78PL4',
-    address: {
-      country_code: 'US',
-    },
-  },
-  create_time: '2022-11-12T14:20:13Z',
-  update_time: '2022-11-12T14:20:31Z',
-  links: [
-    {
-      href: 'https://api.sandbox.paypal.com/v2/checkout/orders/1M2089627N101701V',
-      rel: 'self',
-      method: 'GET',
-    },
-  ],
-}; */
+import ScreenWrapper from '../components/ScreenWrapper';
 
 export default function OrderItemScreen() {
   const dispatch = useDispatch();
@@ -132,7 +60,7 @@ export default function OrderItemScreen() {
   };
 
   return (
-    <div>
+    <ScreenWrapper>
       {status === 'loading' ? (
         <Loader />
       ) : error ? (
@@ -229,21 +157,8 @@ export default function OrderItemScreen() {
                       {sdk && !orderDetails.isPaid && (
                         <PayPalButton
                           amount={orderDetails.totalPrice}
-                          // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                           onSuccess={(details, data) => {
                             paypalRespose(details, data);
-                            /*   alert(
-                              'Transaction completed by ' +
-                                details.payer.name.given_name
-                            );
-
-                            // OPTIONAL: Call your server to save the transaction
-                            return fetch('/paypal-transaction-complete', {
-                              method: 'post',
-                              body: JSON.stringify({
-                                orderID: data.orderID,
-                              }),
-                            }); */
                           }}
                         />
                       )}
@@ -257,6 +172,6 @@ export default function OrderItemScreen() {
           </Row>
         </>
       )}
-    </div>
+    </ScreenWrapper>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Rating({ value, text }) {
   return (
-    <span>
+    <span className="rating">
       <i
         className={
           value >= 1

@@ -4,7 +4,7 @@ import { Header } from './components/Header/Header';
 import Cart from './screens/Cart';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
-import ProductScreen from './screens/ProductScreen';
+import ProductScreen from './screens/productScreen/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
@@ -21,6 +21,7 @@ import ProductAddEdit from './screens/admin/ProductAddEdit';
 import OrderList from './screens/admin/OrderList';
 import SearchScreen from './screens/SearchScreen.js';
 import ArchiveScreen from './screens/ArchiveScreen';
+import FavoriteScreen from './screens/FavoriteScreen';
 
 function App() {
   return (
@@ -52,11 +53,12 @@ function App() {
             />
             <Route path="page/:pageNumber" element={<ArchiveScreen />} />
           </Route>
+          <Route path="/favorites" element={<FavoriteScreen />} />
           <Route path="/products/">
             <Route index element={<ArchiveScreen />} />
+
             <Route path=":category" element={<ArchiveScreen />} />
           </Route>
-
           <Route path="/login" element={<LoginScreen />} />
           <Route path="/register" element={<RegisterScreen />} />
           <Route path="/profile" element={<ProfileScreen />} />

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { fetchSingleProduct } from '../slice/productSlice';
-import { cartActions } from '../slice/cartSlice';
-import Loader from '../components/Loader';
-import ProductImage from '../components/ProductImage';
-import AddReviewSection from '../components/AddReviewSection';
-import Rating from '../components/Rating';
+import { fetchSingleProduct } from '../../slice/productSlice';
+import { cartActions } from '../../slice/cartSlice';
+import Loader from '../../components/Loader';
+import ProductImage from '../../components/ProductImage';
+import AddReviewSection from '../../components/AddReviewSection';
+import Rating from '../../components/Rating';
+import './ProductScreen.scss';
 import {
   Col,
   Image,
@@ -19,13 +20,17 @@ import {
   Alert,
   Container,
 } from 'react-bootstrap';
+import ScreenWrapper from '../../components/ScreenWrapper';
+import Faverite from '../../components/Faverite';
 
 export default function ProductScreen() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { product, status, error } = useSelector((state) => state.product);
+  const { itemList } = useSelector((state) => state.cart);
   const { userInfo } = useSelector((state) => state.user);
-
+  const alreadyInCart =
+    itemList.length > 0 && itemList.find((item) => item._id === product._id);
   const [qty, setQty] = useState(1);
 
   const addToCartHandle = () => {
@@ -38,7 +43,7 @@ export default function ProductScreen() {
   }, [id, dispatch]);
 
   return (
-    <Container>
+    <ScreenWrapper>
       {status === 'loading' ? (
         <Loader />
       ) : error ? (
@@ -61,7 +66,10 @@ export default function ProductScreen() {
           </Row>
 
           <Row>
-            <Col md={12} lg={6}>
+            <Col md={12} lg={6} className="product-img">
+              <span className="faverite">
+                <Faverite product={product} />
+              </span>
               <ProductImage url={product.image} fluid />
               <AddReviewSection
                 reviews={product.reviews}
@@ -80,7 +88,6 @@ export default function ProductScreen() {
                   />
                 </ListGroupItem>
                 <ListGroupItem>{product.description}</ListGroupItem>
-                <ListGroupItem>Price: $ {product.price}</ListGroupItem>
               </ListGroup>
             </Col>
             <Col lg={3} md={12}>
@@ -118,16 +125,25 @@ export default function ProductScreen() {
                     </ListGroupItem>
                   )}
 
-                  <ListGroupItem>
-                    <Button
-                      className="btn-block"
-                      type="button"
-                      disabled={product.countInStock < 1}
-                      variant="primary"
-                      onClick={addToCartHandle}
-                    >
-                      Add to cart
-                    </Button>
+                  <ListGroupItem className="cart-buttons">
+                    {alreadyInCart ? (
+                      <>
+                        <p>This item is added to your Cart</p>{' '}
+                        <Button as={Link} variant="primary" to={'/cart'}>
+                          Check Your cart
+                        </Button>
+                      </>
+                    ) : (
+                      <Button
+                        className="btn-block"
+                        type="button"
+                        disabled={product.countInStock < 1}
+                        variant="primary"
+                        onClick={addToCartHandle}
+                      >
+                        Add to cart
+                      </Button>
+                    )}
                   </ListGroupItem>
                 </ListGroup>
               </Card>
@@ -135,6 +151,6 @@ export default function ProductScreen() {
           </Row>
         </div>
       )}
-    </Container>
+    </ScreenWrapper>
   );
 }

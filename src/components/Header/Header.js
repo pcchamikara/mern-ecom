@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { category } from '../../constants/productConstants';
 import { userActions } from '../../slice/userSlice';
 import CartIcon from '../CartIcon';
+import HeartIcon from '../HeartIcon';
 import SearchBox from '../SearchBox';
 import './Header.scss';
 
@@ -46,6 +47,9 @@ export const Header = () => {
               </NavDropdown>
               <Nav.Link as={Link} to="/cart">
                 <CartIcon />
+              </Nav.Link>
+              <Nav.Link as={Link} to="/favorites">
+                <HeartIcon />
               </Nav.Link>
               {userInfo && userInfo.name ? (
                 <NavDropdown title={userInfo.name} id="username">

@@ -13,8 +13,18 @@ import Loader from './Loader';
 import Product from './Product/Product';
 
 export default function Products({ perPage = 8 }) {
+  const currentPage = window.location.pathname;
+
   const dispatch = useDispatch();
-  const { products, status, error } = useSelector((state) => state.product);
+  let {
+    products: productsList,
+    status,
+    error,
+  } = useSelector((state) => state.product);
+  const favorites = useSelector((state) => state.favorite.favorites);
+  if (currentPage === '/mern-ecom/favorites') {
+    productsList = favorites;
+  }
 
   const { keyword } = useParams();
   const { pageNumber } = useParams();
@@ -36,9 +46,9 @@ export default function Products({ perPage = 8 }) {
   } else if (status === 'scceeded') {
     content = (
       <Row>
-        {products.length > 0 ? (
+        {productsList.length > 0 ? (
           <>
-            {products.map((prod) => (
+            {productsList.map((prod) => (
               <Col sm={12} md={6} lg={4} xl={3} key={prod._id}>
                 <Product product={prod} />
               </Col>

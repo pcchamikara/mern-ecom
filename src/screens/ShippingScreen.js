@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 export default function ShippingScreen() {
   const { shippingAddress } = useSelector((state) => state.cart);
@@ -33,10 +34,10 @@ export default function ShippingScreen() {
     navigate('/payment');
   };
   return (
-    <div>
+    <ScreenWrapper>
       <FormContainer>
         <CheckoutSteps step1 step2 />
-        <h1>Shipping</h1>
+        <h1 className="mt-3">Shipping</h1>
 
         {/*  {error && <Alert varient="danger">{error} </Alert>} */}
         <Form onSubmit={submitHandler}>
@@ -86,6 +87,6 @@ export default function ShippingScreen() {
           </Button>
         </Form>
       </FormContainer>
-    </div>
+    </ScreenWrapper>
   );
 }

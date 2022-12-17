@@ -16,6 +16,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
+import ScreenWrapper from '../components/ScreenWrapper';
 
 export default function ShippingScreen() {
   const { shippingAddress } = useSelector((state) => state.cart);
@@ -31,7 +32,7 @@ export default function ShippingScreen() {
     navigate('/order');
   };
   return (
-    <div>
+    <ScreenWrapper>
       <FormContainer>
         <CheckoutSteps step1 step2 step3 />
         <h1>Payment</h1>
@@ -68,6 +69,6 @@ export default function ShippingScreen() {
           </Button>
         </Form>
       </FormContainer>
-    </div>
+    </ScreenWrapper>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Faverite from '../Faverite';
 
 import ProductImage from '../ProductImage';
 import Rating from '../Rating';
@@ -9,8 +10,15 @@ import './Product.scss';
 export default function Product({ product }) {
   return (
     <Card>
+      <span className="faverite">
+        <Faverite product={product} />
+      </span>
       <Link to={`/product/${product._id}`}>
-        <ProductImage url={product.image} variant="top" />
+        <ProductImage
+          url={product.image}
+          variant="top"
+          style={{ aspectRatio: '1/1', objectFit: 'contain' }}
+        />
       </Link>
       <Card.Body>
         <Card.Title>

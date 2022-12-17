@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Loader from '../components/Loader';
 import ProductImage from '../components/ProductImage';
+import ScreenWrapper from '../components/ScreenWrapper';
 import { creteOreder } from '../slice/orderSlice';
 
 export default function OrderScreen() {
@@ -65,7 +66,7 @@ export default function OrderScreen() {
   };
 
   return (
-    <>
+    <ScreenWrapper>
       {status === 'loading' && <Loader />}
       <CheckoutSteps step1 step2 step3 step4 />
       <Row>
@@ -138,6 +139,6 @@ export default function OrderScreen() {
           </Card>
         </Col>
       </Row>
-    </>
+    </ScreenWrapper>
   );
 }
