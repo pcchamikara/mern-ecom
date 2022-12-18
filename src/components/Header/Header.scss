@@ -20,16 +20,18 @@
   position: relative;
   .count {
     position: absolute;
-    top: -17px;
-    left: -2px;
-    //background: rgba(0, 0, 0, 0.6);
-    width: 20px;
-    height: 20px;
+    top: -21px;
+    left: 0px;
+    width: auto;
+    height: 18px;
     display: flex;
     align-content: center;
     justify-content: center;
     border-radius: 1px;
     border: 1px solid;
     transform: rotate(-45deg);
+    font-size: 10px;
+    min-width: 17px;
+    padding: 2px;
   }
 }

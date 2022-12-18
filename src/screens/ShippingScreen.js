@@ -37,7 +37,6 @@ export default function ShippingScreen() {
     <ScreenWrapper>
       <FormContainer>
         <CheckoutSteps step1 step2 />
-        <h1 className="mt-3">Shipping</h1>
 
         {/*  {error && <Alert varient="danger">{error} </Alert>} */}
         <Form onSubmit={submitHandler}>

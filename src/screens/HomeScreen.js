@@ -19,7 +19,7 @@ export default function HomeScreen() {
       <Container>
         <div className="mt-5">
           <h2>Latest Products </h2>
-          <Products perPage={4} />
+          <Products perPage={8} />
         </div>
       </Container>
     </div>
