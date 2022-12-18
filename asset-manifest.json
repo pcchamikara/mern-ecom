@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/mern-ecom/static/css/main.256c579f.css",
-    "main.js": "/mern-ecom/static/js/main.f3350f59.js",
+    "main.css": "/mern-ecom/static/css/main.657eb77d.css",
+    "main.js": "/mern-ecom/static/js/main.99cf74c7.js",
     "static/js/787.34115356.chunk.js": "/mern-ecom/static/js/787.34115356.chunk.js",
     "index.html": "/mern-ecom/index.html",
-    "main.256c579f.css.map": "/mern-ecom/static/css/main.256c579f.css.map",
-    "main.f3350f59.js.map": "/mern-ecom/static/js/main.f3350f59.js.map",
+    "main.657eb77d.css.map": "/mern-ecom/static/css/main.657eb77d.css.map",
+    "main.99cf74c7.js.map": "/mern-ecom/static/js/main.99cf74c7.js.map",
     "787.34115356.chunk.js.map": "/mern-ecom/static/js/787.34115356.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.256c579f.css",
-    "static/js/main.f3350f59.js"
+    "static/css/main.657eb77d.css",
+    "static/js/main.99cf74c7.js"
   ]
 }
