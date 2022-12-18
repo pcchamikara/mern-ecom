@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import FormContainer from '../components/FormContainer';
+import ScreenWrapper from '../components/ScreenWrapper';
 import { userLogin } from '../slice/userSlice';
 
 export default function LoginScreen({ location }) {
@@ -37,10 +38,10 @@ export default function LoginScreen({ location }) {
     }
   }, [userInfo, navigate]);
   return (
-    <>
+    <ScreenWrapper>
       <FormContainer>
         <h1 className="my-3">Sign In</h1>
-
+        {error}
         {error && <Alert varient="danger">{error} </Alert>}
         <Form onSubmit={submitHandler}>
           <FormGroup>
@@ -56,7 +57,7 @@ export default function LoginScreen({ location }) {
           <FormGroup>
             <FormLabel> Password</FormLabel>
             <FormControl
-              type="text"
+              type="password"
               placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -75,6 +76,6 @@ export default function LoginScreen({ location }) {
           </Row>
         </Form>
       </FormContainer>
-    </>
+    </ScreenWrapper>
   );
 }

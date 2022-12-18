@@ -37,6 +37,7 @@ const cartSlice = createSlice({
 
       state.totalCount++;
       updateCart(state);
+      action.payload.toast.success(`${newItem.name} added to your cart`);
     },
     updateQty(state, action) {
       const updatedItem = action.payload;
@@ -58,6 +59,7 @@ const cartSlice = createSlice({
       );
       state.totalCount--;
       updateCart(state);
+      action.payload.toast.error(`${removeItem.name} removed from your cart`);
     },
     /* ================= */
     saveShippingAddress(state, action) {

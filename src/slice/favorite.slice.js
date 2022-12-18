@@ -8,7 +8,7 @@ const favoriteSlice = createSlice({
   reducers: {
     favoriteHandler(state, action) {
       const favoritesArray = state.favorites;
-      const id = action.payload;
+      const id = action.payload.product;
 
       let newFavorites;
       if (
@@ -16,9 +16,12 @@ const favoriteSlice = createSlice({
         favoritesArray.find((item) => item._id === id._id)
       ) {
         newFavorites = favoritesArray.filter((item) => item._id !== id._id);
+        action.payload.toast.error(`${id.name} removed from your favries`);
       } else {
         newFavorites = [...favoritesArray, id];
+        action.payload.toast.success(`${id.name} added to your favries`);
       }
+
       state.favorites = newFavorites;
 
       // Store the updated favorites in localStorage

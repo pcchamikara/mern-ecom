@@ -22,22 +22,22 @@ import OrderList from './screens/admin/OrderList';
 import SearchScreen from './screens/SearchScreen.js';
 import ArchiveScreen from './screens/ArchiveScreen';
 import FavoriteScreen from './screens/FavoriteScreen';
-
+import './styles/toast.scss';
 function App() {
   return (
     <BrowserRouter basename="/mern-ecom">
       <Header />
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={5000}
         hideProgressBar={false}
-        newestOnTop
+        newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="dark"
       />
       <div className="p-0" style={{ minHeight: '100vh' }}>
         <Routes>

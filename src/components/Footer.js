@@ -8,6 +8,7 @@ import {
   NavLink,
   Row,
 } from 'react-bootstrap';
+import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 import { category } from '../constants/productConstants';
 
@@ -22,7 +23,7 @@ export default function Footer() {
               {category.map((cat) => (
                 <NavLink
                   to={`/products/${cat}`}
-                  key={cat._id + cat.name}
+                  key={uuidv4()}
                   className="text-white"
                 >
                   {cat}
@@ -48,7 +49,7 @@ export default function Footer() {
         <hr></hr>
         <Row>
           <p className="text-center">
-            Design and developed by Pulasthi Chamikara Karunadhipathi
+            Design and developed by Pulasthi Chamikara Karundhipathi
           </p>
         </Row>
       </Container>

@@ -19,7 +19,7 @@ export default function SearchBox() {
           value={search}
         />
         <Button type="submit" variant="warning">
-          Search
+          <i className="fa-solid fa-magnifying-glass"></i>
         </Button>
       </Form>
     </>

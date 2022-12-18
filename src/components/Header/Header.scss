@@ -1,3 +1,5 @@
+@import '../../styles/Colors.scss';
+
 .navbar-nav {
   @media screen and (max-width: 991px) {
     width: 100%;
@@ -34,4 +36,21 @@
     min-width: 17px;
     padding: 2px;
   }
+}
+.top-header-wrapper {
+  background: $pri;
+  text-align: right;
+}
+.top-header {
+  padding: 5px 15px !important;
+  color: $war;
+  display: flex;
+  justify-content: end;
+  div:last-child {
+    margin-right: 0px !important;
+  }
+}
+
+nav.navbar-dark {
+  background: #000 !important;
 }

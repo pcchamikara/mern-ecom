@@ -19,6 +19,40 @@ export const Header = () => {
   };
   return (
     <header>
+      <div className="top-header-wrapper">
+        <Navbar className="container top-header">
+          {userInfo && userInfo.name ? (
+            <>
+              <i className="fa-solid fa-user mx-2"></i>
+              <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown.Item as={Link} to="/profile">
+                  Profile
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={logOutHandler}>
+                  Log Out
+                </NavDropdown.Item>
+              </NavDropdown>
+            </>
+          ) : (
+            <Nav.Link as={Link} to="/login">
+              <i className="fa-regular fa-user mx-2"></i>Sign in
+            </Nav.Link>
+          )}
+          {userInfo && userInfo.isAdmin && (
+            <NavDropdown title="Admin">
+              <NavDropdown.Item as={Link} to="/admin/user-list">
+                Users
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/admin/product-list">
+                Products
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/admin/order-list">
+                Orders
+              </NavDropdown.Item>
+            </NavDropdown>
+          )}
+        </Navbar>
+      </div>
       <Navbar expand="lg" className="navbar-dark bg-primary">
         <Container className="justify-content-between">
           <Navbar.Brand>
@@ -34,6 +68,9 @@ export const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav>
             <Navbar.Collapse id="basic-navbar-nav me-auto">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
               <NavDropdown title="categories">
                 {category.map((cat) => (
                   <NavDropdown.Item
@@ -51,33 +88,6 @@ export const Header = () => {
               <Nav.Link as={Link} to="/favorites">
                 <HeartIcon />
               </Nav.Link>
-              {userInfo && userInfo.name ? (
-                <NavDropdown title={userInfo.name} id="username">
-                  <NavDropdown.Item as={Link} to="/profile">
-                    Profile
-                  </NavDropdown.Item>
-                  <NavDropdown.Item onClick={logOutHandler}>
-                    Log Out
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                <Nav.Link as={Link} to="/login">
-                  Sign in
-                </Nav.Link>
-              )}
-              {userInfo && userInfo.isAdmin && (
-                <NavDropdown title="Admin">
-                  <NavDropdown.Item as={Link} to="/admin/user-list">
-                    Users
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/product-list">
-                    Products
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/admin/order-list">
-                    Orders
-                  </NavDropdown.Item>
-                </NavDropdown>
-              )}
             </Navbar.Collapse>
           </Nav>
         </Container>

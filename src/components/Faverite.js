@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { favoriteActions } from '../slice/favorite.slice';
 
 export default function Faverite({ product }) {
@@ -9,7 +10,9 @@ export default function Faverite({ product }) {
   const isCheckd = favorites.find((item) => item._id === product._id);
 
   const setFaverite = () => {
-    dispatch(favoriteActions.favoriteHandler(product));
+    const fav = dispatch(favoriteActions.favoriteHandler({ product, toast }));
+    console.log(fav);
+    /* toast.success(`${product.name} added to your favries`); */
   };
 
   return (

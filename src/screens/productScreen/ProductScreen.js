@@ -8,6 +8,7 @@ import ProductImage from '../../components/ProductImage';
 import AddReviewSection from '../../components/AddReviewSection';
 import Rating from '../../components/Rating';
 import './ProductScreen.scss';
+import { toast } from 'react-toastify';
 import {
   Col,
   Image,
@@ -34,9 +35,10 @@ export default function ProductScreen() {
   const [qty, setQty] = useState(1);
 
   const addToCartHandle = () => {
-    dispatch(cartActions.addToCart({ product, qty }));
+    dispatch(cartActions.addToCart({ product, qty, toast }));
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (id) {
       dispatch(fetchSingleProduct(id));
     }

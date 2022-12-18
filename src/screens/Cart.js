@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import ProductImage from '../components/ProductImage';
 import ScreenWrapper from '../components/ScreenWrapper';
 import { cartActions } from '../slice/cartSlice';
+import { toast } from 'react-toastify';
 export default function Cart() {
   const cartItems = useSelector((state) => state.cart.itemList);
   const totalPrice = useSelector((state) => state.cart.totalPrice);
@@ -21,8 +22,8 @@ export default function Cart() {
   const updateQtyHandler = (id, qty) => {
     dispatch(cartActions.updateQty({ id, qty }));
   };
-  const deleteHandler = (id) => {
-    dispatch(cartActions.removeFromCart({ id }));
+  const deleteHandler = (id, name) => {
+    dispatch(cartActions.removeFromCart({ id, name, toast }));
   };
   const userInfo = useSelector((state) => state.user.userInfo);
   const total =
@@ -67,7 +68,7 @@ export default function Cart() {
                     <Col md={1}>
                       <i
                         className="fa-sharp fa-solid fa-trash cursor-pointer"
-                        onClick={() => deleteHandler(itm._id)}
+                        onClick={() => deleteHandler(itm._id, itm.name)}
                       ></i>
                     </Col>
                   </Row>
