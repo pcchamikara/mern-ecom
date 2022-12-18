@@ -8,6 +8,13 @@ import Rating from '../Rating';
 import './Product.scss';
 
 export default function Product({ product }) {
+  const excerpt = (str) => {
+    if (str?.length > 40) {
+      str = str.substring(0, 40) + '...';
+    }
+    return str;
+  };
+
   return (
     <Card>
       <span className="faverite">
@@ -22,7 +29,7 @@ export default function Product({ product }) {
       </Link>
       <Card.Body>
         <Card.Title>
-          <Link to={`/product/${product._id}`}>{product.name}</Link>
+          <Link to={`/product/${product._id}`}>{excerpt(product.name)}</Link>
         </Card.Title>
         <Col>
           <strong>${product.price} </strong>

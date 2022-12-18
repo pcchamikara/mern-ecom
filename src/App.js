@@ -39,7 +39,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <div className="h-75  p-0">
+      <div className="p-0" style={{ minHeight: '100vh' }}>
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/page/:pageNumber" element={<HomeScreen />} />
