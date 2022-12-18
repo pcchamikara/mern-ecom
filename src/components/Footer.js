@@ -48,7 +48,7 @@ export default function Footer() {
         <hr></hr>
         <Row>
           <p className="text-center">
-            Design and developed by Pulasthi Chamikara Karundhipathi
+            Design and developed by Pulasthi Chamikara Karunadhipathi
           </p>
         </Row>
       </Container>

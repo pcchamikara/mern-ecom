@@ -1,7 +1,7 @@
 {
   "name": "ecom",
   "version": "0.1.0",
-  "homepage": "https://pcchamikara.github.io/mern-ecom",
+  "homepage": "https://pulasthichamikara.github.io/mern-ecom/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
