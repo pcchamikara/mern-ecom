@@ -23,7 +23,7 @@ import { fetchProducts } from '../slice/productSlice';
 export default function ArchiveScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { pages, page } = useSelector((state) => state.product);
+  const { pages, page, status } = useSelector((state) => state.product);
   const priceMark = 2500;
   const location = useLocation(); // get current page
   const searchParams = new URLSearchParams(location.search); // get query params
@@ -111,11 +111,14 @@ export default function ArchiveScreen() {
         </Col>
         <Col sm={9}>
           <Products />
-          <PaginationLinks
-            page={pageNumber}
-            pages={pages}
-            setPageNumber={setPageNumber}
-          />
+
+          {pageNumber < pages && status === 'scceeded' && (
+            <PaginationLinks
+              page={pageNumber}
+              pages={pages}
+              setPageNumber={setPageNumber}
+            />
+          )}
         </Col>
       </Row>
     </ScreenWrapper>
